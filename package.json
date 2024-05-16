@@ -1,0 +1,26 @@
+{
+  "name": "winston-webstore-demo",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "trace": "node -r ./tracing.js app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "@opentelemetry/auto-instrumentations-node": "^0.46.1",
+    "@opentelemetry/exporter-logs-otlp-grpc": "^0.51.1",
+    "@opentelemetry/exporter-trace-otlp-proto": "^0.51.1",
+    "@opentelemetry/sdk-node": "^0.51.1",
+    "@opentelemetry/winston-transport": "^0.3.0",
+    "axios": "^1.6.8",
+    "express": "^4.19.2",
+    "morgan": "^1.10.0",
+    "winston": "^3.13.0",
+    "winston-transport": "^4.7.0"
+  }
+}
