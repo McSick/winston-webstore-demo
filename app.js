@@ -3,7 +3,7 @@ const winston = require('winston');
 const morgan = require('morgan');
 const { faker } = require('@faker-js/faker');
 const axios = require('axios');
-
+const opentelemetry = require('@opentelemetry/api');
 // Set up Winston logger
 const logger = winston.createLogger({
   level: 'info',
@@ -41,6 +41,12 @@ app.get('/products', (req, res) => {
 
 app.post('/cart/add/:id', (req, res) => {
   const product = products.find(p => p.id === req.params.id);
+  const activeSpan = opentelemetry.trace.getActiveSpan();
+  activeSpan.setAttributes({
+    'app.product.id': req.params.id,
+    'app.product.name': product?.name,
+  });
+
   if (product) {
     logger.info(`Product added to cart: ${product.name}`);
     res.send(`Product added to cart: ${product.name}`);
@@ -52,6 +58,10 @@ app.post('/cart/add/:id', (req, res) => {
 
 app.post('/order', (req, res) => {
   const orderId = faker.datatype.uuid();
+  const activeSpan = opentelemetry.trace.getActiveSpan();
+  activeSpan.setAttributes({
+    'app.order.id': orderId,
+  });
   logger.info(`Order placed: ${orderId}`);
   res.send(`Order placed: ${orderId}`);
 });
