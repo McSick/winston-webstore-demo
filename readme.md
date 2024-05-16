@@ -72,6 +72,18 @@ winston-webstore-demo/
 - [@faker-js/faker](https://www.npmjs.com/package/@faker-js/faker): Generate massive amounts of fake data
 - [axios](https://www.npmjs.com/package/axios): Promise based HTTP client for the browser and Node.js
 
+
+## OTel Tracing and logging
+
+Use the below ENV vars to send your traces and logs to Honeycomb. You can sign up for a free account at https://www.honeycomb.io/signup/ to get your API key.
+
+```
+export OTEL_EXPORTER_OTLP_ENDPOINT="https://api.honeycomb.io" # US instance
+#export OTEL_EXPORTER_OTLP_ENDPOINT="https://api.eu1.honeycomb.io" # EU instance
+export OTEL_EXPORTER_OTLP_HEADERS="x-honeycomb-team=your-api-key"
+export OTEL_SERVICE_NAME="your-service-name"
+```
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
