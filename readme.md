@@ -84,6 +84,14 @@ export OTEL_EXPORTER_OTLP_HEADERS="x-honeycomb-team=your-api-key"
 export OTEL_SERVICE_NAME="your-service-name"
 ```
 
+## Honeycomb Marker
+
+If using Honeycomb, you can add a marker to your logs to make it easier to find them in the Honeycomb UI. To do this, add the following ENV var
+
+```
+export HONEYCOMB_API_KEY="your-api-key"
+```
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
